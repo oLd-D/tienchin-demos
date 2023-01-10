@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.guo.ds.mapper.DeptMapper">
+<!--查询所有部门, 并且加上该角色能够查询的部门-->
+    <select id="getAllDepts" resultType="com.guo.ds.entity.Dept">
+        SELECT * FROM sys_dept d WHERE d.del_flag='0'
+        ${params.data_scope}
+    </select>
+</mapper>
