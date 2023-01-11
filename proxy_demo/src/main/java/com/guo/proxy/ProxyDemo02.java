@@ -6,6 +6,9 @@ import net.sf.cglib.proxy.MethodProxy;
 
 import java.lang.reflect.Method;
 
+/**
+ * cglib动态代理
+ */
 public class ProxyDemo02 {
     public static void main(String[] args) {
         Enhancer enhancer = new Enhancer();
