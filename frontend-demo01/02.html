@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Title</title>
+</head>
+<body>
+<script>
+  /**
+   * 登录
+   * resolve 表示获取结果成功, reject 表示失败
+   * 无论 resolve 还是 reject 都会将括号中的结果抛出, resolve 的结果会进入 then 中, reject 的结果会进入 catch 中
+   * @param resolve 成功
+   * @param reject 失败
+   */
+  function login(resolve, reject) {
+    setTimeout(() => {
+      // 生成随机数模拟登录成功或失败
+      let num = Math.random()
+      if (num > 0.5) {
+        resolve("login success")
+      }else {
+        reject("login failed")
+      }
+    }, 1000)
+  }
+  function getInfo(resolve, reject) {
+    setTimeout(() => {
+      let number = Math.random()
+      if (number > 0.5) {
+        resolve("getInfo success")
+      } else {
+        reject("getInfo failed")
+      }
+    }, 1000)
+  }
+
+  function getMenus(resolve, reject) {
+    setTimeout(() => {
+      let number = Math.random()
+      if (number > 0.5) {
+        resolve("getMenus success")
+      } else {
+        reject("getMenus failed")
+      }
+    }, 1000)
+  }
+
+  // 一个 Promise 就是一个异步任务, 会在将来被执行
+  new Promise(login).then(data => {
+    // login 执行成功, 即 resolve 方法抛出结果, 则进入then分支
+    console.log("login:", data)
+    // 创建一个新的异步任务, 在未来返回结果
+    return new Promise(getInfo)
+  }).then(data => {
+    // getInfo 执行成功, 进入该then
+    console.log("getInfo", data)
+    return new Promise(getMenus)
+  }).then(data => {
+    console.log("getMenus", data)
+  }).catch(err => {
+    // 如果上面任意一个出异常了，都会进入到最近的 catch 代码块中
+    console.error("err:", err)
+  });
+</script>
+</body>
+</html>
