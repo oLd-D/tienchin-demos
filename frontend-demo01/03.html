@@ -25,14 +25,13 @@
     }, 1000)
   }
 
-
   // 一个 Promise 就是一个异步任务, 会在将来被执行
   new Promise(login).then(data => {
     // login 执行成功, 即 resolve 方法抛出结果, 则进入then分支
     console.log("login:", data)
   }, err => {
     console.error("err:", err)
-  })
+  });
 </script>
 </body>
 </html>
