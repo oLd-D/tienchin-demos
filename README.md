@@ -1,2 +1,2 @@
 # tienchin-demos
-tienchin项目的demo复刻
+tienchin项目的各个demo, 方便理解
